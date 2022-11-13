@@ -1,0 +1,90 @@
+<!--
+  ~ Copyright (c) 2013 – 2016 Ricki Hirner (bitfire web engineering).
+  ~ All rights reserved. This program and the accompanying materials
+  ~ are made available under the terms of the GNU Public License v3.0
+  ~ which accompanies this distribution, and is available at
+  ~ http://www.gnu.org/licenses/gpl.html
+  -->
+
+<resources>
+
+    <!-- colors -->
+
+    <color name="grey100">#f5f5f5</color>
+    <color name="grey200">#eeeeee</color>
+    <color name="grey500">#9E9E9E</color>
+    <color name="grey700">#616161</color>
+    <color name="grey800">#424242</color>
+    <color name="grey900">#212121</color>
+    <color name="red400">#EF5350</color>
+    <color name="red700">#d32f2f</color>
+
+    <color name="primaryColor">#7cb342</color>
+    <color name="primaryLightColor">#aee571</color>
+    <color name="primaryDarkColor">#4b830d</color>
+    <color name="colorOnPrimary">@android:color/black</color>
+
+    <color name="secondaryColor">#ff6d00</color>
+    <color name="secondaryLightColor">#ff9e40</color>
+    <color name="secondaryDarkColor">#c43c00</color>
+    <color name="colorOnSecondary">@android:color/white</color>
+
+    <color name="primaryTextColor">@color/grey900</color>
+    <color name="secondaryTextColor">@color/grey800</color>
+
+    <color name="backgroundColor">@color/grey200</color>
+    <color name="errorColor">@color/red700</color>
+
+    <!-- app theme -->
+
+    <style name="AppTheme.Base" parent="Theme.MaterialComponents.DayNight"/>
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- see https://github.com/material-components/material-components-android/blob/master/docs/theming/Color.md for component color names -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>       <!-- additionally required for AppCompatActivity -->
+        <item name="colorPrimaryVariant">@color/primaryLightColor</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+
+        <item name="colorError">@color/errorColor</item>
+
+        <item name="android:textColorPrimary">@color/primaryTextColor</item>
+        <item name="android:textColorSecondary">@color/secondaryTextColor</item>
+
+        <item name="android:colorBackground">@color/backgroundColor</item>
+
+        <item name="switchPreferenceCompatStyle">@style/MySwitchPreference</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <!-- AddAccountActivity -->
+
+    <style name="account_list_card">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+
+    <!-- stepper (wizard) -->
+
+    <style name="stepper_nav_bar">
+        <item name="cardElevation">4dp</item>
+    </style>
+
+
+    <!-- widgets -->
+
+    <color name="cardview_background">@color/secondaryLightColor</color>
+
+    <style name="MySwitchPreference" parent="@style/Preference.SwitchPreferenceCompat.Material">
+        <item name="widgetLayout">@layout/view_preference_switch</item>
+    </style>
+
+</resources>
