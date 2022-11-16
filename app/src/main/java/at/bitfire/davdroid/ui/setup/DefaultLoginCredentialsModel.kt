@@ -89,8 +89,8 @@ class DefaultLoginCredentialsModel(app: Application): AndroidViewModel(app) {
         if(!accountAC.isEmpty())
             eMailUser = accountAC[0].name
 
-        var givenUrl: String? = "https://extranet.ac-grenoble.fr/iwc/svc/calendar/anon/view?calid=/home/"+eMailUser+"/calendar/"
-        var givenUsername: String? = "fmouneau"
+        var givenUrl: String? = "https://webmail.ac-grenoble.fr/cal/dav/home/"+eMailUser+"/calendar/"
+        var givenUsername: String? = ""
         var givenPassword: String? = ""
 
         intent.data?.normalizeScheme()?.let { uri ->

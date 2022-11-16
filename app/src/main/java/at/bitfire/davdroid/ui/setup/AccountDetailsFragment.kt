@@ -134,6 +134,10 @@ class AccountDetailsFragment : Fragment() {
         } else
             v.contactGroupMethod.isEnabled = true
 
+        // code Ajouter
+        // on valide avec le nom de compte par defaut
+        v.createAccount.performClick()
+
         return v.root
     }
 

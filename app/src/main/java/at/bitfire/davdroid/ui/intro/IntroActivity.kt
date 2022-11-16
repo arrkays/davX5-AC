@@ -62,7 +62,6 @@ class IntroActivity: AppIntro2() {
         isSkipButtonEnabled = false
 
         //---code ajouté---
-
         // skiper l'intro
         setResult(Activity.RESULT_OK)
         finish()

@@ -105,8 +105,9 @@ class AccountsActivity: AppCompatActivity(), NavigationView.OnNavigationItemSele
             syncAllAccounts()
 
         // code ajouté
-        // on lance la page de création du compte
-        startActivity(Intent(this, LoginActivity::class.java))
+        // on lance la page de création du compte si pas de compte
+        if(allAccounts().size == 0)
+            startActivity(Intent(this, LoginActivity::class.java))
     }
 
     override fun onResume() {
