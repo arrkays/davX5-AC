@@ -15,12 +15,14 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.*
 import at.bitfire.davdroid.DavUtils
+import at.bitfire.davdroid.PermissionUtils
 import at.bitfire.davdroid.R
 import at.bitfire.davdroid.databinding.ActivityAccountBinding
 import at.bitfire.davdroid.db.AppDatabase
@@ -91,6 +93,11 @@ class AccountActivity: AppCompatActivity() {
             DavUtils.requestSync(this, model.account)
             Snackbar.make(binding.viewPager, R.string.account_synchronizing_now, Snackbar.LENGTH_LONG).show()
         }
+
+        //code ajouté
+        //demande de permission pour calandar
+        val requestPermission = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {}
+        requestPermission.launch(PermissionUtils.CALENDAR_PERMISSIONS)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -36,6 +36,8 @@ class DefaultLoginCredentialsModel(app: Application): AndroidViewModel(app) {
     val baseUrlError = MutableLiveData<String>()
 
     /** user name or email address */
+    val userEmailAdresse = MutableLiveData<String>() //var ajouter
+
     val username = MutableLiveData<String>()
     val usernameError = MutableLiveData<String>()
 
@@ -80,16 +82,16 @@ class DefaultLoginCredentialsModel(app: Application): AndroidViewModel(app) {
             return
         initialized = true
 
-        // Get account
+        // Get account, code ajouté
         val accountManager = AccountManager.get(getApplication())
         val accounts = accountManager.getAccountsByType(null)
         var accountAC = accounts.filter { it.name.endsWith("@ac-grenoble.fr") }
 
-        var eMailUser = ""
+        userEmailAdresse.value = ""
         if(!accountAC.isEmpty())
-            eMailUser = accountAC[0].name
+            userEmailAdresse.value = accountAC[0].name
 
-        var givenUrl: String? = "https://webmail.ac-grenoble.fr/cal/dav/home/"+eMailUser+"/calendar/"
+        var givenUrl: String? = "https://webmail.ac-grenoble.fr/cal/dav/home/"+userEmailAdresse.value+"/calendar/"
         var givenUsername: String? = ""
         var givenPassword: String? = ""
 

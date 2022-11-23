@@ -75,6 +75,17 @@ class DefaultLoginCredentialsFragment : Fragment() {
                         .commit()
         }
 
+        // code ajouté
+        //on met l'adresse mail dans champ mail
+        v.emailBaseURL.setText(model.userEmailAdresse.value)
+
+        //quand le champ mail change de focus on aplique les changemet a baseURL
+        v.emailBaseURL.setOnFocusChangeListener { _, hasFocus ->
+            // on modifie dans le model
+            model.userEmailAdresse.value = v.emailBaseURL.text.toString();
+            //on applique dans l url du calandar
+            v.loginUrlBaseUrlEdittext.setText("https://webmail.ac-grenoble.fr/cal/dav/home/"+ model.userEmailAdresse.value +"/calendar/")
+        }
         return v.root
     }
 

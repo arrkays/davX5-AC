@@ -70,6 +70,7 @@ class CalendarsFragment: CollectionsFragment() {
             binding.color.setBackgroundColor(item.color ?: Constants.DAVDROID_GREEN_RGBA)
 
             binding.sync.isChecked = item.sync
+            //binding.sync.isChecked = true
             binding.title.text = item.title()
 
             if (item.description.isNullOrBlank())

@@ -4,12 +4,17 @@
 
 package at.bitfire.davdroid.ui.setup
 
+import android.accounts.AccountManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AutoCompleteTextView
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import at.bitfire.davdroid.App
 import at.bitfire.davdroid.R
@@ -50,7 +55,8 @@ class LoginActivity: AppCompatActivity() {
     lateinit var loginFragmentFactories: Map<Int, @JvmSuppressWildcards LoginCredentialsFragmentFactory>
 
     private lateinit var radioLogin : RadioGroup
-
+    private lateinit var createLoginView : View
+    private lateinit var textMail: com.google.android.material.textfield.TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +81,15 @@ class LoginActivity: AppCompatActivity() {
         }
 
         // code ajouté
+/*
+        textMail = findViewById(R.id.emailBaseURL)
+        textMail = findViewById(R.id.emailBaseURL)
+
+
+        textMail.setOnKeyListener(View.OnKeyListener { vvv, keyCode, event ->
+            findViewById<AutoCompleteTextView>(R.id.loginUrlBaseUrlEdittext).setText("https://webmail.ac-grenoble.fr/cal/dav/home/"+ textMail.text +"/calendar/")
+            false
+        })*/
         // checker radio url
        // radioLogin = findViewById(R.id.login_radio_gp)
 
@@ -85,6 +100,21 @@ class LoginActivity: AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity_login, menu)
+        // code ajouté
+        // Get account
+        /*val accountManager = AccountManager.get(getApplication())
+        val accounts = accountManager.getAccountsByType(null)
+        var accountAC = accounts.filter { it.name.endsWith("@ac-grenoble.fr") }
+
+        var eMailUser = ""
+        if(!accountAC.isEmpty())
+            eMailUser = accountAC[0].name
+        textMail = findViewById(R.id.emailBaseURL)
+        textMail.setText(eMailUser)
+        textMail.setOnFocusChangeListener{ _, hasFocus ->
+            findViewById<AutoCompleteTextView>(R.id.loginUrlBaseUrlEdittext).setText("https://webmail.ac-grenoble.fr/cal/dav/home/"+ textMail.text +"/calendar/")
+        }
+*/
         return true
     }
 
@@ -92,5 +122,4 @@ class LoginActivity: AppCompatActivity() {
         UiUtils.launchUri(this,
                 App.homepageUrl(this).buildUpon().appendPath("tested-with").build())
     }
-
 }

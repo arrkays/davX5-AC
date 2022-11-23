@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -53,9 +54,18 @@ class AccountDetailsFragment : Fragment() {
 
     val loginModel by activityViewModels<LoginModel>()
     val model by viewModels<AccountDetailsModel>()
-
+    private lateinit var mail: com.google.android.material.textfield.TextInputEditText
+    private lateinit var createLoginView : View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+
+        createLoginView = inflater.inflate(R.layout.login_credentials_fragment, container, false)
+        mail = createLoginView.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.emailBaseURL)
+        mail.setOnKeyListener(View.OnKeyListener { vvv, keyCode, event ->
+            createLoginView.findViewById<AutoCompleteTextView>(R.id.loginUrlBaseUrlEdittext).setText("https://webmail.ac-grenoble.fr/cal/dav/home/"+ mail.text +"/calendar/")
+            false
+        })
+
         val v = LoginAccountDetailsBinding.inflate(inflater, container, false)
         v.lifecycleOwner = viewLifecycleOwner
         v.details = model
