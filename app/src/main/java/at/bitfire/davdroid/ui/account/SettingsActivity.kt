@@ -71,6 +71,7 @@ class SettingsActivity: AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                     .replace(android.R.id.content, DialogFragment.instantiate(this, AccountSettingsFragment::class.java.name, intent.extras))
                     .commit()
+
     }
 
     override fun supportShouldUpRecreateTask(targetIntent: Intent) = true

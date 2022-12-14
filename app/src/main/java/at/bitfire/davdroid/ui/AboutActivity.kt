@@ -8,6 +8,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.util.DisplayMetrics
@@ -23,6 +24,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.preference.ListPreference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.bitfire.davdroid.App

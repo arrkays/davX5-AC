@@ -122,6 +122,11 @@ class AccountDetailsFragment : Fragment() {
                         val account = Account(name, getString(R.string.account_type))
                         intent.putExtra(AccountActivity.EXTRA_ACCOUNT, account)
                         startActivity(intent)
+                        //code ajouté
+                        //set interval
+                        AccountSettings(model.context, account).let{
+                            it.setSyncInterval(CalendarContract.AUTHORITY, 900L)
+                        }
                     } else {
                         Snackbar.make(requireActivity().findViewById(android.R.id.content), R.string.login_account_not_created, Snackbar.LENGTH_LONG).show()
 

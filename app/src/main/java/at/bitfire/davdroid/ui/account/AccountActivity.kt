@@ -7,12 +7,14 @@ package at.bitfire.davdroid.ui.account
 import android.accounts.Account
 import android.accounts.AccountManager
 import android.accounts.OnAccountsUpdateListener
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.CalendarContract
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
@@ -29,6 +31,7 @@ import at.bitfire.davdroid.db.AppDatabase
 import at.bitfire.davdroid.db.Collection
 import at.bitfire.davdroid.db.Service
 import at.bitfire.davdroid.log.Logger
+import at.bitfire.davdroid.resource.TaskUtils
 import at.bitfire.davdroid.settings.AccountSettings
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -64,6 +67,7 @@ class AccountActivity: AppCompatActivity() {
     private lateinit var binding: ActivityAccountBinding
 
 
+    @SuppressLint("WrongThread")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -98,6 +102,11 @@ class AccountActivity: AppCompatActivity() {
         //demande de permission pour calandar
         val requestPermission = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {}
         requestPermission.launch(PermissionUtils.CALENDAR_PERMISSIONS)
+
+        //Forcer la sync a 15 min (900s)
+        //AccountSettings(this, model.account).let{
+        //   it.setSyncInterval(CalendarContract.AUTHORITY, 900L)
+        //}
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
